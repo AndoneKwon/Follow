@@ -1,15 +1,16 @@
 module.exports = (sequelize, DataTypes)=>(
     sequelize.define('follow',{
-        follower :{
-            type : DataTypes.INTEGER,
+        followerId :{
+            type : DataTypes.STRING(30),
             allowNull : false,
-        },//follow를 하는사람(게시물 요청자)
-
-        following :{
-            type : DataTypes.INTEGER,
+            defaultValue : 0,
+            primaryKey: true
+        },
+        followingId :{
+            type : DataTypes.STRING(30),
             allowNull : false,
-        },//follow를 당하는사람(게시물 제공자)
-
+            defaultValue : 0,
+        },
         like_num : {
             type : DataTypes.INTEGER,
             allowNull : false,
@@ -22,6 +23,7 @@ module.exports = (sequelize, DataTypes)=>(
             defaultValue : 0,
         },
 
+
         status : {
             type : DataTypes.TINYINT(1),
             allowNull : false,
@@ -32,6 +34,7 @@ module.exports = (sequelize, DataTypes)=>(
     
         {
             paranoid : true,
+            primaryKey : true,
         }
 
     

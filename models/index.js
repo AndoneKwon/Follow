@@ -12,9 +12,19 @@ const sequelize = new Sequelize(
   config.database, config.username, config.password, config,
 );
 
-db.sequelize = sequelize;//프로퍼티 추가후 초기화
+db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.User = require('./user')(sequelize, Sequelize);
+db.Reply = require('./reply')(sequelize, Sequelize);
+db.Location = require('./location')(sequelize, Sequelize);
 db.Follow = require('./follow')(sequelize, Sequelize);
+
+
+
+db.User.hasMany(db.Reply);
+db.Reply.belongsTo(db.Reply);
+
+
 
 module.exports = db;
