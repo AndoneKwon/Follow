@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var nJwt = require('njwt');
-const { Follow } = require('../models');
+const { Follow,User } = require('../models');
 
 /* GET users listing. */
 router.get('/followReq', function(req, res, next) {
@@ -13,6 +13,26 @@ router.get('/followReq', function(req, res, next) {
     followingId:following,
   });
   res.send('good');
+});
+
+router.post('/followSearch', function(req, res, next) {
+  //token_values=nJwt.verify(req.headers.authorization,'nodebird', 'HS256');
+  //follower=token_values.body.id;
+  //following=req.body.following;
+  Follow.findAll({
+    where:{
+      nickname:{
+        [Op.like]:"%"+res.body.nickname+"%"
+      }
+    }
+  })
+  .then(result=>{
+    res.json(result)
+  })
+  .catch(err=>{
+    console.log(err);
+    res.send(err);
+  })
 });
 
 module.exports = router;
