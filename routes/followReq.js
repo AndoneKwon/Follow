@@ -21,12 +21,12 @@ router.post('/search', function(req, res, next) {
   //token_values=nJwt.verify(req.headers.authorization,'nodebird', 'HS256');
   //follower=token_values.body.id;
   //following=req.body.following;
-  Follow.findAll({
-    where:{
-      nickname:{
-        like:"%"+res.body.nickname+"%"
-      }
-    }
+  var nick=req.body.nickname;
+  console.log(nick);
+  User.findAll({
+    where:{nickname:{
+      [like]:'%'+nick+'%'
+    }}
   })
   .then(result=>{
     res.json(JSON.stringify(result));
