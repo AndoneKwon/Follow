@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var nJwt = require('njwt');
 const { Follow,User } = require('../models');
-const Sequelize = require('sequelize');
-const {like} = Sequelize.Op;
+const Sequelize = require
+const {like} = Sequelize
 
 /* GET users listing. */
 router.get('/followReq', function(req, res, next) {
@@ -17,7 +17,7 @@ router.get('/followReq', function(req, res, next) {
   res.send('good');
 });
 
-router.post('/search', function(req, res, next) {
+router.post('/followSearch', function(req, res, next) {
   //token_values=nJwt.verify(req.headers.authorization,'nodebird', 'HS256');
   //follower=token_values.body.id;
   //following=req.body.following;
