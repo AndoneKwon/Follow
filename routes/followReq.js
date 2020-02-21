@@ -3,7 +3,7 @@ var router = express.Router();
 var nJwt = require('njwt');
 const { Follow,User } = require('../models');
 const Sequelize = require
-const {like} = Sequelize
+const {like} = Sequelize.Op
 
 /* GET users listing. */
 router.get('/followReq', function(req, res, next) {
@@ -24,7 +24,7 @@ router.post('/followSearch', function(req, res, next) {
   Follow.findAll({
     where:{
       nickname:{
-        [Op.like]:"%"+res.body.nickname+"%"
+        like:"%"+res.body.nickname+"%"
       }
     }
   })
