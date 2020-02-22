@@ -29,7 +29,8 @@ router.post('/search', function(req, res, next) {
     }}
   })
   .then(result=>{
-    res.json(JSON.stringify(result));
+    var inform=JSON.stringify(result).nickname;
+    res.json(JSON.stringify(inform));
   })
 });
 
