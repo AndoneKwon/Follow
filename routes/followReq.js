@@ -4,7 +4,7 @@ var nJwt = require('njwt');
 const { Follow,User } = require('../models');
 const Sequelize = require('sequelize');
 const {like} = Sequelize.Op
-
+var dotenv = require('dotenv').config();
 
 // follower: 팔로잉을 하는 사람
 // followering 팔로잉을 당하는사람
